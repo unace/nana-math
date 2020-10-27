@@ -10,19 +10,10 @@ function shuffle(array) {
 }
 
 function makeList() {
-    let list2 = [];
-    for (let i = 1; i < 10; ++i) {
-        list2.push([4, i]);
-    }
-    shuffle(list2);
-    // let list3 = [];
-    // for (let i = 2; i < 10; ++i) {
-    //     list3.push([3, i]);
-    // }
-    // shuffle(list3);
     list = [];
-    list.push(...list2.slice(0, 10));
-    //list.push(...list3.slice(0, 5));
+    for (let i = 1; i < 10; ++i) {
+        list.push([8, i]);
+    }
     shuffle(list);
 
     for (let i = 0; i < list.length; ++i) {
