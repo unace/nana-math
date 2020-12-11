@@ -15,7 +15,9 @@ function makeList() {
     for (let j = 0; j < 10; ++j) {
         let list2 = [];
         for (let i = 1; i < 10; ++i) {
+            list2.push([5, i]);
             list2.push([4, i]);
+            list2.push([3, i]);
         }
         shuffle(list2);
         list.push(...list2);

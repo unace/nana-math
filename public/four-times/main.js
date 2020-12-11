@@ -10,16 +10,17 @@ function shuffle(array) {
 }
 
 function makeList() {
-    list = [];
-    for (let i = 1; i < 10; ++i) {
-        list.push([4, i]);
-    }
-    shuffle(list);
 
-    for (let i = 0; i < list.length; ++i) {
-        const item = list[i];
-        console.log(`[${i + 1}] ${item[0]} x ${item[1]}`);
+    list = [];
+    for (let j = 0; j < 10; ++j) {
+        let list2 = [];
+        for (let i = 1; i < 10; ++i) {
+            list2.push([4, i]);
+        }
+        shuffle(list2);
+        list.push(...list2);
     }
+
     index = 0;
 }
 
@@ -38,17 +39,18 @@ function start() {
     document.getElementById("start").style.display = "none";
     document.getElementById("next").style.display = "inline";
     nextQuestion();
+    setTimeout(finish, 60 * 1000)
+}
+
+function finish() {
+    document.getElementById("num1").innerHTML = `You finished`;
+    document.getElementById("num2").innerHTML = `${index} items`;
+    document.getElementById("next").style.display = "none";
+    document.getElementById("start").style.display = "start";
 }
 
 function next() {
     if (index < list.length) {
         nextQuestion();
-    }
-    else {
-        document.getElementById("num1").innerHTML = `Congrats!`;
-        const elapsedTime = Date.now() - startTime;
-        document.getElementById("num2").innerHTML = `${Math.round(elapsedTime / 1000)} secs`;
-        document.getElementById("next").style.display = "none";
-        document.getElementById("start").style.display = "start";
     }
 }
